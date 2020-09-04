@@ -1,0 +1,45 @@
+public class Main {
+
+    public static void main(String []args){
+    
+        int[] a = {20,10,30,40,50,60,-30,-10};
+        quickSort(a,0,a.length);
+     
+        for(int i = 0; i < a.length; i++)   
+    }
+    
+     public static void quickSort (int[] a, int start,int end) {
+        
+        if(end - start < 2)
+            return;
+        
+        int pivotIndex = transition(a, start, end);
+        
+        quickSort(a, start, pivotIndex);
+        quickSort(a, pivotIndex+1, end);
+        
+    }
+    
+    public static int transition(int[] a, int start,int end) {
+        
+        int pivot = a[start];
+        int i = start;
+        int j = end;
+        
+        while (i < j) {
+            
+            while (i < j && a[--j] >= pivot);
+            if(i < j)
+                a[i] = a[j];
+            
+            while (i < j && a[++i] <= pivot);
+            if(i < j)
+                a[j] = a[i];
+    
+        }
+        
+        a[j] = pivot;
+        return j;
+    }
+    
+    

@@ -1,0 +1,43 @@
+public class Main{
+
+    public static void main(String []args){
+    
+        int[] a = {20,30,100,10,50,60,70,-30, -10};
+        mergeSort(a,0,a.length);
+       
+        for(int i = 0; i < b.length; i++)
+            System.out.print(b[i] + " ");
+    }
+
+  public static void mergeSort(int[] a, int start, int end) {
+        
+        if (end - start < 2)
+            return;
+        
+        int mid = (start + end)/2;
+            
+        mergeSort(a, start, mid);
+        mergeSort(a, mid, end);
+        
+        merge(a, start, mid, end);
+        
+    }
+    
+    public static void merge (int[] a, int start, int mid, int end) {
+        if (a[mid] >= a[mid-1])
+            return;
+        
+        int[] temp = new int[end-start];
+        int i = start;
+        int j = mid;
+        int tempIndex = 0;
+        
+        while (i < mid && j < end)
+            temp[tempIndex++] = a[i] <= a[j] ? a[i++] : a[j++];
+        
+        System.arraycopy(a, i, a, start+tempIndex, mid - i);
+        System.arraycopy(temp, 0, a, start, tempIndex);
+                    
+    }
+
+}
